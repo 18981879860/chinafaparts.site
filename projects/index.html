@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Projects | Custom Manufacturing Case Studies | chinafaparts.com</title>
+    <style>
+        /* ======== 基础重置 & 全局 ======== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: #1a1a1a;
+            line-height: 1.7;
+            background: #fafbfc;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ======== 导航 ======== */
+        .navbar {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #333;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+        .logo span {
+            color: #f5a623;
+        }
+        .nav-links {
+            display: flex;
+            gap: 22px;
+            list-style: none;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            color: rgba(255,255,255,0.85);
+            font-size: 15px;
+            padding: 4px 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #fff;
+            text-decoration: none;
+            border-bottom-color: #f5a623;
+        }
+        .nav-links .btn-nav {
+            background: #f5a623;
+            color: #1a1a1a;
+            padding: 6px 22px;
+            border-radius: 20px;
+            border-bottom: none;
+            font-weight: 500;
+        }
+        .nav-links .btn-nav:hover {
+            background: #e09515;
+            border-bottom: none;
+        }
+        .nav-links .active {
+            color: #fff;
+            border-bottom-color: #f5a623;
+        }
+
+        /* ======== 面包屑 ======== */
+        .breadcrumb {
+            background: #f8f8f8;
+            padding: 12px 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .breadcrumb a {
+            color: #1a73e8;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* ======== 页面横幅 ======== */
+        .page-banner {
+            position: relative;
+            padding: 60px 0 50px;
+            text-align: center;
+            color: #fff;
+            background-image: url('https://www.jingbang-tech.com/wp-content/uploads/2024/07/jingbang_metal_parts1.webp');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            overflow: hidden;
+            z-index: 0;
+            border-bottom: 4px solid #f5a623;
+        }
+        .page-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            background-attachment: fixed;
+            filter: blur(6px);
+            transform: scale(1.05);
+            z-index: -1;
+        }
+        .page-banner .banner-content {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.60);
+            backdrop-filter: blur(2px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            max-width: 850px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        .page-banner h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+            color: #fff;
+        }
+        .page-banner .subhead {
+            font-size: 17px;
+            color: rgba(255,255,255,0.9);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ======== 主体 ======== */
+        .section {
+            padding: 50px 0;
+        }
+        .section-light {
+            background: #fff;
+        }
+        .section-gray {
+            background: #f8f8f8;
+        }
+        .section-title {
+            font-size: 28px;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .section-sub {
+            text-align: center;
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 36px;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ======== 项目过滤 ======== */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 16px;
+            margin-bottom: 30px;
+        }
+        .filter-bar .filter-btn {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            padding: 6px 22px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #555;
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+        .filter-bar .filter-btn:hover {
+            background: #f5a623;
+            color: #fff;
+            border-color: #f5a623;
+        }
+        .filter-bar .filter-btn.active {
+            background: #f5a623;
+            color: #fff;
+            border-color: #f5a623;
+        }
+
+        /* ======== 项目卡片网格（1:1 方形图片） ======== */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 10px;
+        }
+        .project-card {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #eef2f6;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+        }
+        .project-card .pc-img-wrapper {
+            width: 100%;
+            padding-bottom: 100%;
+            position: relative;
+            background: #eef2f6;
+            overflow: hidden;
+        }
+        .project-card .pc-img-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .project-card .pc-body {
+            padding: 22px 20px 24px;
+        }
+        .project-card .pc-body .tag {
+            display: inline-block;
+            background: #f5a623;
+            color: #1a1a1a;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 14px;
+            border-radius: 20px;
+            margin-bottom: 6px;
+        }
+        .project-card .pc-body .project-type {
+            display: inline-block;
+            background: #eef2f6;
+            color: #666;
+            font-size: 11px;
+            font-weight: 500;
+            padding: 2px 12px;
+            border-radius: 20px;
+            margin-left: 6px;
+        }
+        .project-card .pc-body h3 {
+            color: #1a1a1a;
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+        .project-card .pc-body p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .project-card .pc-body .link {
+            font-weight: 600;
+            color: #f5a623;
+            font-size: 14px;
+        }
+        .project-card .pc-body .link:hover {
+            text-decoration: underline;
+        }
+
+        /* ======== 项目详情（案例研究） ======== */
+        .project-detail {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #eef2f6;
+            padding: 30px 36px;
+            margin-top: 30px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        }
+        .project-detail h3 {
+            color: #1a1a1a;
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+        .project-detail .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px 28px;
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 12px;
+        }
+        .project-detail .meta span strong {
+            color: #1a1a1a;
+        }
+        .project-detail .challenge-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 16px 0 12px;
+        }
+        .project-detail .challenge-solution .box {
+            background: #f8f8f8;
+            padding: 16px 20px;
+            border-radius: 10px;
+            border-left: 4px solid #f5a623;
+        }
+        .project-detail .challenge-solution .box h4 {
+            color: #1a1a1a;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+        .project-detail .challenge-solution .box p {
+            color: #555;
+            font-size: 14px;
+            margin: 0;
+        }
+        .project-detail .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .project-detail .gallery img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            background: #eef2f6;
+        }
+        .project-detail .result {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 10px;
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 40px;
+            justify-content: center;
+        }
+        .project-detail .result .stat {
+            text-align: center;
+        }
+        .project-detail .result .stat .number {
+            font-size: 22px;
+            font-weight: 700;
+            color: #f5a623;
+        }
+        .project-detail .result .stat .label {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* ======== CTA 底部 ======== */
+        .cta-bottom {
+            text-align: center;
+            padding: 40px 20px;
+            background: #1a1a1a;
+            border-radius: 16px;
+            color: #fff;
+        }
+        .cta-bottom h3 {
+            font-size: 26px;
+            margin-bottom: 4px;
+        }
+        .cta-bottom p {
+            color: rgba(255,255,255,0.8);
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+        .cta-bottom .btn {
+            background: #f5a623;
+            color: #1a1a1a;
+            padding: 12px 36px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-block;
+            transition: background 0.2s;
+        }
+        .cta-bottom .btn:hover {
+            background: #e09515;
+            text-decoration: none;
+        }
+
+        /* ======== 底部 ======== */
+        .footer {
+            background: #0d0d0d;
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 30px 0;
+            border-top: 3px solid #f5a623;
+        }
+        .footer a {
+            color: rgba(255,255,255,0.9);
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        /* ======== 响应式 ======== */
+        @media (max-width: 992px) {
+            .project-grid { grid-template-columns: 1fr 1fr; }
+            .project-detail .gallery { grid-template-columns: 1fr 1fr; }
+            .project-detail .challenge-solution { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .page-banner h1 { font-size: 28px; }
+            .page-banner { padding: 40px 0 30px; }
+            .page-banner .banner-content { padding: 30px 16px; }
+            .section-title { font-size: 22px; }
+            .navbar .container { flex-direction: column; gap: 10px; }
+            .nav-links { justify-content: center; gap: 14px; }
+            .page-banner { background-attachment: scroll; }
+            .page-banner::before { background-attachment: scroll; }
+            .project-grid { grid-template-columns: 1fr; }
+            .project-detail { padding: 24px 18px; }
+            .project-detail .gallery { grid-template-columns: 1fr; }
+            .filter-bar { gap: 8px; }
+            .filter-bar .filter-btn { padding: 4px 16px; font-size: 13px; }
+            .project-detail .result { flex-direction: column; gap: 12px; }
+        }
+        @media (max-width: 480px) {
+            .page-banner h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- 导航 -->
+<!-- ============================================================ -->
+<nav class="navbar">
+    <div class="container">
+        <a href="/" class="logo">china<span>fa</span>parts</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/projects/" class="active">Projects</a></li>
+            <li><a href="/products/">Products</a></li>
+            <li><a href="/capabilities/">Capabilities</a></li>
+            <li><a href="/contact/" class="btn-nav">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ============================================================ -->
+<!-- 面包屑 -->
+<!-- ============================================================ -->
+<div class="breadcrumb">
+    <div class="container">
+        <a href="/">Home</a> / <strong>Projects</strong>
+    </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 页面横幅 -->
+<!-- ============================================================ -->
+<section class="page-banner">
+    <div class="container">
+        <div class="banner-content">
+            <h1>Our Projects</h1>
+            <p class="subhead">Case studies and collaborations that showcase how we turn ideas into precision-machined reality. Each project reflects our commitment to quality, innovation, and partnership.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 项目过滤 + 卡片 -->
+<!-- ============================================================ -->
+<section class="section section-light">
+    <div class="container">
+        <h2 class="section-title">Featured Case Studies</h2>
+        <p class="section-sub">Real projects. Real solutions. See how we've helped brands and creators bring their products to life.</p>
+
+        <!-- 过滤栏 -->
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="coffee">Coffee Tools</button>
+            <button class="filter-btn" data-filter="motorcycle">Motorcycle</button>
+            <button class="filter-btn" data-filter="workshop">Workshop</button>
+            <button class="filter-btn" data-filter="edc">EDC & Tactical</button>
+            <button class="filter-btn" data-filter="industrial">Industrial</button>
+        </div>
+
+        <!-- 项目卡片 -->
+        <div class="project-grid" id="projectGrid">
+            <!-- 1. 咖啡品牌定制粉锤 -->
+            <div class="project-card" data-category="coffee">
+                <div class="pc-img-wrapper">
+                    <img src="https://www.jingbang-tech.com/wp-content/uploads/2024/11/espresso-portafilters.webp" alt="Custom Tamper Project" loading="lazy">
+                </div>
+                <div class="pc-body">
+                    <span class="tag">Coffee Tools</span>
+                    <span class="project-type">OEM</span>
+                    <h3>Custom Titanium Tamper for Specialty Coffee Brand</h3>
+                    <p>Designed and manufactured a limited-edition titanium tamper with custom branding for a US-based coffee equipment brand.</p>
+                    <a href="#project1" class="link">View Case Study →</a>
+                </div>
+            </div>
+
+            <!-- 2. 摩托车手把锁 OEM -->
+            <div class="project-card" data-category="motorcycle">
+                <div class="pc-img-wrapper">
+                    <img src="https://www.jingbang-tech.com/wp-content/uploads/2024/11/motor-lock-9.webp" alt="Handbar Lock Project" loading="lazy">
+                </div>
+                <div class="pc-body">
+                    <span class="tag">Motorcycle</span>
+                    <span class="project-type">OEM</span>
+                    <h3>Motorcycle Handbar Lock — Full Production Run</h3>
+                    <p>Produced 500 units of a premium aluminum handbar lock for a European aftermarket motorcycle accessories brand.</p>
+                    <a href="#project2" class="link">View Case Study →</a>
+                </div>
+            </div>
+
+            <!-- 3. Deadblow 锤 OEM -->
+            <div class="project-card" data-category="workshop">
+                <div class="pc-img-wrapper">
+                    <img src="https://www.jingbang-tech.com/wp-content/uploads/2026/03/wrench-spanner-allen-key-4.webp" alt="Deadblow Hammer Project" loading="lazy">
+                </div>
+                <div class="pc-body">
+                    <span class="tag">Workshop</span>
+                    <span class="project-type">OEM</span>
+                    <h3>Deadblow Hammer — Custom Branded Series</h3>
+                    <p>Full production of 500 deadblow hammers with custom handle colors, branded packaging, and ±0.01mm tolerance on the striking face.</p>
+                    <a href="#project3" class="link">View Case Study →</a>
+                </div>
+            </div>
+
+            <!-- 4. 户外品牌战术手电 -->
+            <div class="project-card" data-category="edc">
+                <div class="pc-img-wrapper">
+                    <img src="https://www.jingbang-tech.com/wp-content/uploads/2025/09/Custom-Carbon-Fiber-EDC-Knuckle-Dusters-EDC-Opener-lanyard.jpg" alt="Flashlight Project" loading="lazy">
+                </div>
+                <div class="pc-body">
+                    <span class="tag">EDC & Tactical</span>
+                    <span class="project-type">Prototype</span>
+                    <h3>Tactical Flashlight — Prototype for Outdoor Startup</h3>
+                    <p>Designed and machined a 6061-T6 aluminum flashlight prototype with custom knurling and Type III hard anodized finish.</p>
+                    <a href="#project4" class="link">View Case Study →</a>
+                </div>
+            </div>
+
+            <!-- 5. 螺纹规 — 工具品牌 -->
+            <div class="project-card" data-category="workshop">
+                <div class="pc-img-wrapper">
+                    <img src="https://www.jingbang-tech.com/wp-content/uploads/2024/11/thread-checker-6.webp" alt="Thread Checker Project" loading="lazy">
+                </div>
+                <div class="pc-body">
+                    <span class="tag">Workshop</span>
+                    <span class="project-type">OEM</span>
+                    <h3>Aluminum Thread Checker for Tool Brand</h3>
+                    <p>Produced a run of anodized aluminum thread checkers with laser-etched markings for a US-based hand tool company.</p>
+                    <a href="#project5" class="link">View Case Study →</a>
+                </div>
+            </div>
+
+            <!-- 6. EDC 指虎 + 开瓶器 -->
+            <div class="project-card" data-category="edc">
+                <div class="pc-img-wrapper">
+                    <img src="https://www.jingbang-tech.com/wp-content/uploads/2025/09/Factory-Custom-Damascus-engraved-pry-bars-pocket-clip-contained-EDC-multi-tool.jpg" alt="EDC Knuckle Project" loading="lazy">
+                </div>
+                <div class="pc-body">
+                    <span class="tag">EDC & Tactical</span>
+                    <span class="project-type">Small Batch</span>
+                    <h3>EDC Finger Tiger + Bottle Opener Set</h3>
+                    <p>Machined a small-batch run of G10 and titanium knuckle tools with integrated bottle opener for an EDC gear brand.</p>
+                    <a href="#project6" class="link">View Case Study →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 项目详情（案例研究 - 锚点） -->
+<!-- ============================================================ -->
+<section class="section section-gray">
+    <div class="container">
+        <h2 class="section-title">Case Study Spotlight</h2>
+        <p class="section-sub">A detailed look at one of our recent OEM projects.</p>
+
+        <div id="project2" class="project-detail">
+            <h3>🔩 Motorcycle Handbar Lock — OEM Project</h3>
+            <div class="meta">
+                <span><strong>Client:</strong> Aftermarket Motorcycle Brand (EU)</span>
+                <span><strong>Project Type:</strong> OEM Production</span>
+                <span><strong>Quantity:</strong> 500 units</span>
+                <span><strong>Material:</strong> 6061-T6 Aluminum</span>
+                <span><strong>Finish:</strong> Black Anodized + Laser Engraving</span>
+            </div>
+
+            <div class="challenge-solution">
+                <div class="box">
+                    <h4>⚡ The Challenge</h4>
+                    <p>The client needed a lightweight, secure handbar lock that could be manufactured at scale with consistent quality. They required custom branding (laser-engraved logo) and a black anodized finish that would withstand outdoor conditions.</p>
+                </div>
+                <div class="box">
+                    <h4>✅ Our Solution</h4>
+                    <p>We optimized the design for CNC machining, reducing production time while maintaining tight tolerances. We sourced 6061-T6 aluminum, applied a durable black anodized finish, and laser-engraved each unit with the client's logo and serial number.</p>
+                </div>
+            </div>
+
+            <div class="gallery">
+                <img src="https://www.jingbang-tech.com/wp-content/uploads/2024/11/motor-lock-40.webp" alt="Lock 1" loading="lazy">
+                <img src="https://www.jingbang-tech.com/wp-content/uploads/2024/11/motor-lock-34.webp" alt="Lock 2" loading="lazy">
+                <img src="https://www.jingbang-tech.com/wp-content/uploads/2024/11/motor-lock-28.webp" alt="Lock 3" loading="lazy">
+            </div>
+
+            <div class="result">
+                <div class="stat">
+                    <div class="number">500</div>
+                    <div class="label">Units Delivered</div>
+                </div>
+                <div class="stat">
+                    <div class="number">4</div>
+                    <div class="label">Weeks Lead Time</div>
+                </div>
+                <div class="stat">
+                    <div class="number">100%</div>
+                    <div class="label">Quality Pass Rate</div>
+                </div>
+                <div class="stat">
+                    <div class="number">✔️</div>
+                    <div class="label">Repeat Order Received</div>
+                </div>
+            </div>
+
+            <div style="margin-top:16px; text-align:center;">
+                <a href="/contact/" class="btn" style="background:#f5a623; color:#1a1a1a; padding:10px 28px; border-radius:30px; font-weight:600; display:inline-block;">Start a Similar Project →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- CTA 底部 -->
+<!-- ============================================================ -->
+<section class="section section-light">
+    <div class="container">
+        <div class="cta-bottom">
+            <h3>Ready to Start Your Project?</h3>
+            <p>Whether it's a prototype, a small batch, or a full production run — we're here to help you succeed.</p>
+            <a href="/contact/" class="btn">Contact Us →</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 引流到主站 -->
+<!-- ============================================================ -->
+<section style="background: #1a1a1a; color: #fff; padding: 30px 0; text-align: center;">
+    <div class="container">
+        <p style="font-size: 15px; color: rgba(255,255,255,0.85);">
+            chinafaparts.com is a brand of <strong>JingBang Tech</strong> —
+            <a href="https://www.jingbang-tech.com/" target="_blank" rel="noopener" style="color: #f5a623;">Visit our main site →</a>
+        </p>
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- 底部 -->
+<!-- ============================================================ -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/projects/">Projects</a>
+            <a href="/products/">Products</a>
+            <a href="/capabilities/">Capabilities</a>
+            <a href="/contact/">Contact</a>
+        </div>
+        <p>© 2026 chinafaparts.com | Custom Precision Tools &amp; EDC Gear</p>
+        <p style="font-size: 14px; margin-top: 4px;">
+            Email: <a href="mailto:abby@jingbang-tech.com">abby@jingbang-tech.com</a>
+        </p>
+    </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- 过滤JS -->
+<!-- ============================================================ -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const buttons = document.querySelectorAll('.filter-btn');
+        const cards = document.querySelectorAll('.project-card');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                buttons.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+
+                const filter = this.dataset.filter;
+
+                cards.forEach(card => {
+                    const category = card.dataset.category;
+                    if (filter === 'all' || category === filter) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
