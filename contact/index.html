@@ -253,80 +253,37 @@
             text-decoration: underline;
         }
 
-        /* ======== 联系表单 ======== */
-        .form-card {
-            background: #fff;
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 40px 36px;
-            border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            border: 1px solid #e9edf2;
-        }
-        .form-card h3 {
-            font-size: 22px;
-            color: #1a1a1a;
+        /* ======== CTA 区块 ======== */
+        .cta-bottom {
             text-align: center;
+            padding: 40px 20px;
+            background: #1a1a1a;
+            border-radius: 16px;
+            color: #fff;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .cta-bottom h3 {
+            font-size: 26px;
             margin-bottom: 4px;
         }
-        .form-card .desc {
-            text-align: center;
-            color: #999;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        .form-group {
+        .cta-bottom p {
+            color: rgba(255,255,255,0.8);
+            font-size: 16px;
             margin-bottom: 16px;
         }
-        .form-group label {
-            display: block;
-            font-weight: 500;
-            font-size: 14px;
-            color: #333;
-            margin-bottom: 4px;
-        }
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 10px 14px;
-            border: 1px solid #d0d7de;
-            border-radius: 8px;
-            font-size: 15px;
-            font-family: inherit;
-            transition: border-color 0.2s;
-            background: #fff;
-        }
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #f5a623;
-            box-shadow: 0 0 0 3px rgba(245,166,35,0.15);
-        }
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-        .btn-submit {
+        .cta-bottom .btn {
             background: #f5a623;
             color: #1a1a1a;
-            border: none;
-            padding: 12px 28px;
+            padding: 12px 36px;
             border-radius: 30px;
-            font-size: 16px;
             font-weight: 600;
-            cursor: pointer;
+            display: inline-block;
             transition: background 0.2s;
-            width: 100%;
         }
-        .btn-submit:hover {
+        .cta-bottom .btn:hover {
             background: #e09515;
+            text-decoration: none;
         }
 
         /* ======== 底部 ======== */
@@ -369,8 +326,6 @@
             .contact-grid { grid-template-columns: 1fr; }
             .info-block { flex-direction: column; align-items: center; padding: 24px 16px; gap: 14px; }
             .info-block .item { font-size: 14px; }
-            .form-row { grid-template-columns: 1fr; }
-            .form-card { padding: 28px 18px; }
         }
         @media (max-width: 480px) {
             .page-banner h1 { font-size: 22px; }
@@ -460,49 +415,12 @@
                 <span><strong>Quick Quote:</strong> Include material, quantity, and any special requirements.</span>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- ============================================================ -->
-<!-- 联系表单 -->
-<!-- ============================================================ -->
-<section class="section">
-    <div class="container">
-        <div class="form-card">
-            <h3>Send Us a Message</h3>
-            <p class="desc">Tell us about your project. We'll get back to you with a quote and timeline within 24 hours.</p>
-            <form onsubmit="alert('Thank you for your inquiry. Our team will contact you within 24 hours.'); return false;">
-                <div class="form-group">
-                    <label for="name">Full Name *</label>
-                    <input type="text" id="name" required placeholder="Your full name">
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" required placeholder="your@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" placeholder="+86 138 0000 0000">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <select id="subject">
-                        <option value="">Select a topic...</option>
-                        <option value="quote">Request a Quote</option>
-                        <option value="custom">Custom Design Inquiry</option>
-                        <option value="sample">Sample Request</option>
-                        <option value="technical">Technical Question</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Your Message *</label>
-                    <textarea id="message" required placeholder="Please describe your project: material, quantity, application, special requirements, etc. If you have CAD files, mention them here and we'll share upload instructions."></textarea>
-                </div>
-                <button type="submit" class="btn-submit">Send Inquiry →</button>
-            </form>
+        <!-- CTA 底部（替代表单） -->
+        <div class="cta-bottom" style="margin-top:30px;">
+            <h3>Ready to Start Your Project?</h3>
+            <p>Email us directly or give us a call. We'll get back to you within 24 hours.</p>
+            <a href="mailto:abby@jingbang-tech.com" class="btn">Email Us →</a>
         </div>
     </div>
 </section>
